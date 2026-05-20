@@ -34,7 +34,17 @@ typedef struct {
     char             catatan[100];
 } Rute;
 
-//gduaydbUWQGEGWUGEDUWGEUEWHENKIWJHEIKWHIEGWQUEGQUGEQJHGWUQ BGBWBU
+#define JUMLAH_RUTE    18
+#define JUMLAH_TUJUAN   6
+
+const char *DAFTAR_TUJUAN[JUMLAH_TUJUAN] = {
+    "Kukusan Teknik",
+    "Kukusan Kelurahan",
+    "Area Fakultas Hukum",
+    "Stasiun UI",
+    "Stasiun Pondok Cina",
+    "Resimen Mahasiswa"
+};
 
 Rute semuaRute[] = {
 
