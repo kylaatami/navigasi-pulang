@@ -1,8 +1,22 @@
 #include <stdio.h>
 
+void hitungSkorSemua(){
+}
+
+void cetakModa(ModaTransportasi){
+
+}
+
+void cetakTingkat(TingkatKeamanan){
+
+}
+
+void sortRute(){
+
+}
+
 int main(){
 
-    menu();
-
+    
     return 0;
 }
