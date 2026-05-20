@@ -19,6 +19,15 @@ typedef struct {
     int skor_total;
 } Rute;
 
+Rute semuaRute[] = {
+
+
+};
+
+int filterRute(){
+
+}
+
 #define JUMLAH_RUTE 18
 
 char daftarTujuan[10][50];
