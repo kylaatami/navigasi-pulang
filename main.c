@@ -67,29 +67,52 @@ Rute semuaRute[JUMLAH_RUTE] = {
     {"Ojek online via Jl. Dalam Kampus", "Fakultas Teknik UI", "Resimen Mahasiswa", OJEK, 1.1f, 5, 8000, 23, 21, 24, 22, 0, AMAN, ""}
 };
 
-int filterRute(){
-
+void hitungSkorSemua() {
+    int i;
+    for (i = 0; i < JUMLAH_RUTE; i++) {
+        semuaRute[i].skor_total = semuaRute[i].skor_lampu + 
+                                     semuaRute[i].skor_kepadatan + 
+                                  semuaRute[i].skor_gsm + 
+                                  semuaRute[i].skor_kriminal;
+        
+        if (semuaRute[i].skor_total >= 70) {
+            semuaRute[i].tingkat = AMAN;
+        } else if (semuaRute[i].skor_total >= 40) {
+            semuaRute[i].tingkat = CUKUP_AMAN;
+        } else {
+            semuaRute[i].tingkat = BERISIKO;
+        }
+    }
 }
 
-#define JUMLAH_RUTE 18
-
-char daftarTujuan[10][50];
-
-void hitungSkorSemua(){
+void cetakModa(ModaTransportasi m) {
+    if (m == JALAN_KAKI) printf("Jalan kaki");
+    else if (m == SEPEDA) printf("Sepeda");
+    else if (m == MOTOR) printf("Motor");
+    else if (m == OJEK) printf("Ojek online");
+    else if (m == BIKUN) printf("Bus Kuning");
+    else printf("KRL");
 }
 
-void cetakModa(ModaTransportasi){
-
+void cetakTingkat(TingkatKeamanan t) {
+    if (t == AMAN) printf("AMAN");
+    else if (t == CUKUP_AMAN) printf("CUKUP AMAN");
+    else printf("BERISIKO");
 }
 
-void cetakTingkat(TingkatKeamanan){
-
+void sortRute(Rute arr[], int n) {
+    int i, j;
+    Rute temp;
+    for (i = 0; i < n - 1; i++) {
+        for (j = 0; j < n - i - 1; j++) {
+            if (arr[j].skor_total < arr[j+1].skor_total) {
+                temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
 }
-
-void sortRute(){
-
-}
-
 
 
 int main(){
