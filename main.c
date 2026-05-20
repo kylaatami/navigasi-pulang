@@ -12,6 +12,13 @@ typedef enum {
     BERISIKO
 } TingkatKeamanan;
 
+typedef struct {
+    char nama_rute[120];
+    char tujuan[60];
+    ModaTransportasi moda;
+    int skor_total;
+} Rute;
+
 #define JUMLAH_RUTE 18
 
 char daftarTujuan[10][50];
