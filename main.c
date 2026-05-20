@@ -34,6 +34,8 @@ typedef struct {
     char             catatan[100];
 } Rute;
 
+//gduaydbUWQGEGWUGEDUWGEUEWHENKIWJHEIKWHIEGWQUEGQUGEQJHGWUQ BGBWBU
+
 Rute semuaRute[] = {
 
 
