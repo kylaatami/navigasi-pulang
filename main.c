@@ -71,9 +71,9 @@ void hitungSkorSemua() {
     int i;
     for (i = 0; i < JUMLAH_RUTE; i++) {
         semuaRute[i].skor_total = semuaRute[i].skor_lampu + 
-                                     semuaRute[i].skor_kepadatan + 
-                                  semuaRute[i].skor_gsm + 
-                                  semuaRute[i].skor_kriminal;
+                                    semuaRute[i].skor_kepadatan + 
+                                    semuaRute[i].skor_gsm + 
+                                    semuaRute[i].skor_kriminal;
         
         if (semuaRute[i].skor_total >= 70) {
             semuaRute[i].tingkat = AMAN;
@@ -114,19 +114,89 @@ void sortRute(Rute arr[], int n) {
     }
 }
 
+int main(void) {
+    Rute hasilFilter[JUMLAH_RUTE]; 
+    int pilihan, i, jumlahHasil;
 
-int main(){
-    printf("1. Kukusan Teknik\n");
-printf("0. Keluar\n");
-printf("1. Kukusan Teknik\n");
-printf("0. Keluar\n");
-printf("1. Kukusan Teknik\n");
-printf("0. Keluar\n");
- printf("1. Kukusan Teknik\n");
-printf("0. Keluar\n");
-printf("1. Kukusan Teknik\n");
-printf("0. Keluar\n");
-printf("1. Kukusan Teknik\n");
-printf("0. Keluar\n");
+    hitungSkorSemua();
+
+    printf("============================================\n");
+    printf("PULANG — Sistem Rekomendasi Rute Aman\n");
+    printf("Kelas 01 | Kelompok 01 | SDG 11\n");
+    printf("Asal: Fakultas Teknik UI, Depok\n");
+    printf("============================================\n");
+
+    while (1) {
+        printf("\n+------------------------------------------+\n");
+        printf("|        PILIH TUJUAN PERJALANAN           |\n");
+        printf("+------------------------------------------+\n");
+        for (i = 0; i < JUMLAH_TUJUAN; i++) {
+            printf("|  %d. %-36s|\n", i + 1, DAFTAR_TUJUAN[i]);
+        }
+        printf("|  0. Keluar                               |\n");
+        printf("+------------------------------------------+\n");
+        
+        printf("\nMasukkan pilihan (0-6): ");
+        scanf("%d", &pilihan);
+
+        if (pilihan == 0) {
+            printf("\nTerima kasih sudah menggunakan PULANG.\n");
+            printf("Selamat pulang dan sampai tujuan dengan selamat!\n\n");
+            break;
+        }
+
+        if (pilihan < 1 || pilihan > JUMLAH_TUJUAN) {
+            printf("\nPilihan tidak valid! Silakan coba lagi.\n");
+            continue;
+        }
+
+        jumlahHasil = 0;
+        const char *tujuanDipilih = DAFTAR_TUJUAN[pilihan - 1];
+
+        for (i = 0; i < JUMLAH_RUTE; i++) {
+            if (strcmp(semuaRute[i].tujuan, tujuanDipilih) == 0) {
+                hasilFilter[jumlahHasil] = semuaRute[i];
+                jumlahHasil++;
+            }
+        }
+
+        sortRute(hasilFilter, jumlahHasil);
+
+        printf("\n============================================\n");
+        printf("REKOMENDASI RUTE\n");
+        printf("Asal  : Fakultas Teknik UI\n");
+        printf("Tujuan: %s\n", tujuanDipilih);
+        printf("============================================\n");
+        printf("Ditemukan %d rute (urutan: paling aman dulu)\n", jumlahHasil);
+
+        for (i = 0; i < jumlahHasil; i++) {
+            printf("\n");
+            if (i == 0) {
+                printf("  *** REKOMENDASI UTAMA ***\n");
+            }
+            printf("  %d. %s\n", i + 1, hasilFilter[i].nama_rute);
+            printf("     Moda         : "); cetakModa(hasilFilter[i].moda); printf("\n");
+            printf("     Jarak & Waktu: %.1f km | ~%d menit\n", hasilFilter[i].jarak_km, hasilFilter[i].waktu_menit);
+            
+            if (hasilFilter[i].estimasi_biaya > 0) {
+                printf("     Estimasi Biaya: Rp%d\n", hasilFilter[i].estimasi_biaya);
+            } else {
+                printf("     Estimasi Biaya: Gratis\n");
+            }
+            printf("     Keamanan     : %d/100 [", hasilFilter[i].skor_total);
+            cetakTingkat(hasilFilter[i].tingkat);
+            printf("]\n");
+        }
+
+        printf("\n============================================\n");
+        printf("KESIMPULAN TRANSPORTASI TERAMAN:\n");
+        printf("Gunakan  : "); cetakModa(hasilFilter[0].moda); printf("\n");
+        printf("Via      : %s\n", hasilFilter[0].nama_rute);
+        printf("Skor     : %d/100 [", hasilFilter[0].skor_total);
+        cetakTingkat(hasilFilter[0].tingkat);
+        printf("]\n");
+        printf("============================================\n\n");
+    }
+
     return 0;
 }
