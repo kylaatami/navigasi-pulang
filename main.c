@@ -49,8 +49,11 @@ void sortRute(){
 
 }
 
-int main(){
 
+
+int main(){
+    printf("1. Kukusan Teknik\n");
+printf("0. Keluar\n");
 
     return 0;
 }
