@@ -46,9 +46,25 @@ const char *DAFTAR_TUJUAN[JUMLAH_TUJUAN] = {
     "Resimen Mahasiswa"
 };
 
-Rute semuaRute[] = {
-
-
+Rute semuaRute[JUMLAH_RUTE] = {
+    {"Jalan kaki via Jl. Kukusan Raya", "Fakultas Teknik UI", "Kukusan Teknik", JALAN_KAKI, 0.8f, 10, 0, 21, 20, 23, 20, 0, AMAN, ""},
+    {"Ojek online via Jl. Kukusan Raya", "Fakultas Teknik UI", "Kukusan Teknik", OJEK, 0.8f, 4, 8000, 21, 20, 23, 20, 0, AMAN, ""},
+    {"Jalan kaki via Gang Belakang Teknik", "Fakultas Teknik UI", "Kukusan Teknik", JALAN_KAKI, 0.6f, 8, 0, 6, 5, 14, 5, 0, BERISIKO, ""},
+    {"Bikun lalu jalan kaki dari Halte Kukusan", "Fakultas Teknik UI", "Kukusan Kelurahan", BIKUN, 2.0f, 12, 0, 22, 22, 24, 21, 0, AMAN, ""},
+    {"Ojek online via Jl. Margonda – Jl. Kukusan", "Fakultas Teknik UI", "Kukusan Kelurahan", OJEK, 2.2f, 8, 12000, 20, 18, 24, 18, 0, AMAN, ""},
+    {"Jalan kaki via Jl. Kukusan Kelurahan Dalam", "Fakultas Teknik UI", "Kukusan Kelurahan", JALAN_KAKI, 1.5f, 20, 0, 10, 12, 18, 10, 0, CUKUP_AMAN, ""},
+    {"Bikun via Jl. Dalam Kampus", "Fakultas Teknik UI", "Area Fakultas Hukum", BIKUN, 1.8f, 10, 0, 24, 23, 25, 23, 0, AMAN, ""},
+    {"Jalan kaki via Jl. Dalam Kampus UI", "Fakultas Teknik UI", "Area Fakultas Hukum", JALAN_KAKI, 1.8f, 22, 0, 24, 22, 25, 22, 0, AMAN, ""},
+    {"Jalan kaki via Pinggir Danau UI", "Fakultas Teknik UI", "Area Fakultas Hukum", JALAN_KAKI, 2.0f, 25, 0, 4, 5, 16, 6, 0, BERISIKO, ""},
+    {"Bikun ke Halte Stasiun UI", "Fakultas Teknik UI", "Stasiun UI", BIKUN, 1.2f, 8, 0, 23, 24, 25, 23, 0, AMAN, ""},
+    {"Ojek online via Jl. Margonda", "Fakultas Teknik UI", "Stasiun UI", OJEK, 1.3f, 5, 10000, 23, 25, 25, 22, 0, AMAN, ""},
+    {"Jalan kaki via Jl. Margonda", "Fakultas Teknik UI", "Stasiun UI", JALAN_KAKI, 1.3f, 16, 0, 22, 24, 25, 20, 0, AMAN, ""},
+    {"Bikun ke Halte Pondok Cina lalu jalan kaki", "Fakultas Teknik UI", "Stasiun Pondok Cina", BIKUN, 2.5f, 15, 0, 22, 21, 24, 21, 0, AMAN, ""},
+    {"Ojek online via Jl. Margonda", "Fakultas Teknik UI", "Stasiun Pondok Cina", OJEK, 2.6f, 9, 14000, 21, 20, 24, 20, 0, AMAN, ""},
+    {"Jalan kaki via Jl. Dalam Kampus – Pondok Cina", "Fakultas Teknik UI", "Stasiun Pondok Cina", JALAN_KAKI, 2.4f, 30, 0, 14, 13, 20, 12, 0, CUKUP_AMAN, ""},
+    {"Jalan kaki via Jl. Dalam Kampus UI", "Fakultas Teknik UI", "Resimen Mahasiswa", JALAN_KAKI, 1.1f, 14, 0, 23, 21, 24, 22, 0, AMAN, ""},
+    {"Bikun lalu turun di halte terdekat", "Fakultas Teknik UI", "Resimen Mahasiswa", BIKUN, 1.0f, 7, 0, 23, 22, 24, 22, 0, AMAN, ""},
+    {"Ojek online via Jl. Dalam Kampus", "Fakultas Teknik UI", "Resimen Mahasiswa", OJEK, 1.1f, 5, 8000, 23, 21, 24, 22, 0, AMAN, ""}
 };
 
 int filterRute(){
